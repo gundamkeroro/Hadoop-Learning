@@ -1,7 +1,5 @@
 import java.io.IOException;
 
-import static com.sun.tools.doclint.Entity.sum;
-
 /**
  * Created by fengxinlin on 3/4/17.
  */
@@ -17,7 +15,7 @@ public class Driver {
         String prMatrix = args[1];
         String unitState = args[2];
         int count = Integer.parseInt(args[3]);
-        for(int i=0;  i<count;  i++) {
+        for (int i = 0;  i < count;  i++) {
             String[] args1 = {transitionMatrix, prMatrix+i, unitState+i};
             cellMultiplication.main(args1);
             String[] args2 = {unitState + i, prMatrix+(i+1)};

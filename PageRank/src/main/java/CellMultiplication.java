@@ -1,18 +1,12 @@
-import jdk.nashorn.internal.scripts.JO;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.ObjectWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
-import org.apache.hadoop.mapreduce.lib.aggregate.DoubleValueSum;
-import org.apache.hadoop.mapreduce.lib.aggregate.StringValueMax;
 import org.apache.hadoop.mapreduce.lib.chain.ChainMapper;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
-import org.apache.hadoop.mapreduce.lib.join.ArrayListBackedIterator;
-import org.apache.hadoop.mapreduce.lib.join.StreamBackedIterator;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
@@ -64,7 +58,7 @@ public class CellMultiplication {
             }
             for (String cell : transitionMatrixCell) {
                 String outputKey = cell.split("=")[0];
-                double relation = Double.parseDouble(cell.split("0")[1]);
+                double relation = Double.parseDouble(cell.split("=")[1]);
                 String outputValue = String.valueOf(relation * pageRankCell);
             }
         }
